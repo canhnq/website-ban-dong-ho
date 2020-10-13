@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c1e60f50f3d84f7e87fc37d7704679c6" Name="Diagram1" ZoomLevel="80">
+        <EntityTypeShape EntityType="QLCHDongHoModel.BinhLuan" Width="1.5" PointX="5.25" PointY="3.75" />
+        <EntityTypeShape EntityType="QLCHDongHoModel.ChiTietDonHang" Width="1.5" PointX="8.25" PointY="4.625" />
+        <EntityTypeShape EntityType="QLCHDongHoModel.ChiTietPhieuNhap" Width="1.5" PointX="5.25" PointY="7.125" />
+        <EntityTypeShape EntityType="QLCHDongHoModel.DonDatHang" Width="1.5" PointX="6" PointY="19.375" />
+        <EntityTypeShape EntityType="QLCHDongHoModel.KhachHang" Width="1.5" PointX="3.75" PointY="19.625" />
+        <EntityTypeShape EntityType="QLCHDongHoModel.LoaiSanPham" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="QLCHDongHoModel.LoaiThanhVien" Width="1.5" PointX="0.75" PointY="16" />
+        <EntityTypeShape EntityType="QLCHDongHoModel.NhaCungCap" Width="1.5" PointX="0.75" PointY="4.625" />
+        <EntityTypeShape EntityType="QLCHDongHoModel.NhaSanXuat" Width="1.5" PointX="0.75" PointY="8.25" />
+        <EntityTypeShape EntityType="QLCHDongHoModel.PhieuNhap" Width="1.5" PointX="3" PointY="11.5" />
+        <EntityTypeShape EntityType="QLCHDongHoModel.SanPham" Width="1.5" PointX="3" PointY="2.875" />
+        <EntityTypeShape EntityType="QLCHDongHoModel.ThanhVien" Width="1.5" PointX="3" PointY="15.125" />
+        <AssociationConnector Association="QLCHDongHoModel.FK_BinhLuan_ToTable" />
+        <AssociationConnector Association="QLCHDongHoModel.FK_BinhLuan_ToTable_1" />
+        <AssociationConnector Association="QLCHDongHoModel.FK_ChiTietDonHang_ToTable" />
+        <AssociationConnector Association="QLCHDongHoModel.FK_ChiTietDonHang_ToTable_1" />
+        <AssociationConnector Association="QLCHDongHoModel.FK_ChiTietPhieuNhap_ToTable" />
+        <AssociationConnector Association="QLCHDongHoModel.FK_ChiTietPhieuNhap_ToTable_1" />
+        <AssociationConnector Association="QLCHDongHoModel.FK_DonDatHang_ToTable" />
+        <AssociationConnector Association="QLCHDongHoModel.FK_KhachHang_ToTable" />
+        <AssociationConnector Association="QLCHDongHoModel.FK_SanPham_ToTable_2" />
+        <AssociationConnector Association="QLCHDongHoModel.FK_ThanhVien_ToTable" />
+        <AssociationConnector Association="QLCHDongHoModel.FK_PhieuNhap_ToTable" />
+        <AssociationConnector Association="QLCHDongHoModel.FK_SanPham_ToTable" />
+        <AssociationConnector Association="QLCHDongHoModel.FK_SanPham_ToTable_1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
