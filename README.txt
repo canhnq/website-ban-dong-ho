@@ -1,1 +1,1 @@
-Them co so du lieu
+Load du lieu vao trang index

@@ -1,31 +1,222 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@using website_ban_dong_ho.Models
+@model IEnumerable<SanPham>
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    IEnumerable<SanPham> lstDHNamM = ViewBag.lstDHNamM as IEnumerable<SanPham>;
+    IEnumerable<SanPham> lstDHNuM = ViewBag.lstDHNuM as IEnumerable<SanPham>;
+    IEnumerable<SanPham> lstDHTeM = ViewBag.lstDHTeM as IEnumerable<SanPham>;
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="~/Content/bootstrap.js"></script>
+
+    <link rel="stylesheet" href="~/Content/bootstrap.css">
+    <link rel="stylesheet" href="~/Content/Index.css">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-inverse">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <nav class="navbar navbar-expand navbar-light bg-light">
+                        <form class="navbar-form pull-right">
+                            <input type="text" style="width: 300px;">
+                            <button type="submit" class="btn btn-success">Tìm kiếm</button>
+                        </form>
+
+                        <div class="nav navbar-nav">
+                            <a class="nav-item nav-link active" href="#">
+                                Trang chủ<span class="sr-only">(current)</span>
+                            </a>
+
+                            @foreach (var groupItem in Model.GroupBy(n => n.LoaiSanPham))
+                            {
+                                if (groupItem.Key != null)
+                                {
+                                    <div class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                                           aria-haspopup="true" aria-expanded="false">@groupItem.Key.TenLoai</a>
+                                        <div class="dropdown-menu">
+                                            @foreach (var item in groupItem.GroupBy(n => n.NhaSanXuat))
+                                            {
+                                                if (item.Key != null)
+                                                {
+                                                    <a class="dropdown-item" href="#">@item.Key.TenNSX</a>
+                                                }
+                                            }
+                                            </div>
+                                    </div>
+                                }
+                            }
+
+                            <a class="nav-item nav-link" href="#">Liên hệ</a>
+                            <a class="nav-item nav-link" href="#">Giới thiệu</a>
+
+                        </div>
+
+                        <div class="nav navbar-nav float-xs-right">
+                            <a class="nav-item nav-link" href="#">Đăng nhập</a>
+                            <a class="nav-item nav-link" href="#">Đăng ký</a>
+                            <a class="nav-item nav-link" href="#">Giỏ hàng</a>
+
+                        </div>
+                    </nav>
+                </div>
+
+
+            </div>
+        </div>
+    </nav>
+
+
+
+
+    <hr>
+
+
+    <!-- <div class="container mt-2">
+        <div class="row">
+            <div class="col-sm-12">
+                <img src="1200-350-1200x350-2.png" alt="" style="width: 100%;">
+                <hr>
+            </div>
+        </div>
+    </div> -->
+    <div class="container mt-2">
+        <div class="row">
+            <div class="col-sm-12">
+                <img class="img-fluid" src="~/Content/HinhAnhSP/1200-350-1200x350.png" />
+                <hr>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+
+
+
+    <div class="dong-ho-nam-ban-chay">
+        <div class="thongbao-dhnam mt-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+
+                        <div class="alert alert-success">Danh sách đồng hồ Nam mới</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sanpham-dhnam">
+            <div class="container">
+                <div class="row">
+                    @foreach (var item in lstDHNamM.Take(4))
+                    {
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <div class="card-block">
+                                    <a href="#"><img src="@Url.Content("~/Content/HinhAnhSP/"+item.HinhAnh)" style="width: 100%;height:216px" alt=""></a>
+                                    <div class="card-title text-xs-center mt-1" style="height: 50px;">@item.TenSP</div>
+                                    <div class="card-title text-xs-center">@item.DonGia.Value.ToString("#,##") VND</div>
+                                    <div class="btn btn-primary themsp">Thêm vào giỏ</div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+
+    <div class="dong-ho-nu-ban-chay">
+        <div class="thongbao-dhnu mt-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+
+                        <div class="alert alert-success">Danh sách đồng hồ Nữ mới</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sanpham-dhnu">
+            <div class="container">
+                <div class="row">
+                    @foreach (var item in lstDHNuM.Take(4))
+                    {
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <div class="card-block">
+                                    <a href="#"><img src="@Url.Content("~/Content/HinhAnhSP/"+item.HinhAnh)" style="width: 100%;height:216px" alt=""></a>
+                                    <div class="card-title text-xs-center mt-1" style="height: 50px;">@item.TenSP</div>
+                                    <div class="card-title text-xs-center">@item.DonGia.Value.ToString("#,##") VND</div>
+                                    <div class="btn btn-primary themsp">Thêm vào giỏ</div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+
+    <div class="dong-ho-tre-em-ban-chay">
+        <div class="thongbao-dhtreem mt-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+
+                        <div class="alert alert-success">Danh sách đồng hồ Trẻ em mới</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sanpham-dhtreem">
+            <div class="container">
+                <div class="row">
+                    @foreach (var item in lstDHTeM.Take(1))
+                    {
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <div class="card-block">
+                                    <a href="#"><img src="@Url.Content("~/Content/HinhAnhSP/"+item.HinhAnh)" style="width: 100%;height:216px" alt=""></a>
+                                    <div class="card-title text-xs-center mt-1" style="height: 50px;">@item.TenSP</div>
+                                    <div class="card-title text-xs-center">@item.DonGia.Value.ToString("#,##") VND</div>
+                                    <div class="btn btn-primary themsp">Thêm vào giỏ</div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="navbar navbar-dark bg-inverse footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <p class="float-xs-right"><a href="#" class="lentren">Lên đầu trang</a></p>
+                    <small style="color: blanchedalmond;">
+                        <u>Địa chỉ</u> : 373/22 Phạm Ngũ Lão, P. Phạm Ngũ Lão, Quận 1,
+                        Tp. HCM
+                    </small>
+                    <br>
+                    <small style="color: blanchedalmond;"><u>Hotline</u> : 0989 022 111</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+﻿* {
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-dark .navbar-nav.khungmenu .nav-link {
+    line-height: 35px;
+    font-size: 13px;
+    padding: 17px 10px;
+}
+
+.navbar {
+    border-radius: 0%;
+}
+
+.themsp {
+    display: block;
+}
+
+.navbar-fixed-top {
+    top: -3px
+}
