@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    @Html.Partial("~/Views/HeadPartial.cshtml")
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="header">
+        @Html.Action("MenuPartial", "Partial")
+    </div>
+    <div class="product">
+        @RenderBody()
+    </div>
+
+        
+</body>
+</html>

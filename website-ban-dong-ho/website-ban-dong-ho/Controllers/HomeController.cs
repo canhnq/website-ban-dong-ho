@@ -18,8 +18,9 @@ namespace website_ban_dong_ho.Controllers
             ViewBag.lstDHNuM = lstDHNuM;
             var lstDHTeM = db.SanPhams.Where(n => n.MaLoaiSP == 3 && n.Moi == 1 && n.DaXoa == false).ToList();
             ViewBag.lstDHTeM = lstDHTeM;
-            var lstSP = db.SanPhams;
-            return View(lstSP);
+           
+            return View();
         }
+        
     }
 }

@@ -1,1 +1,1 @@
-Load du lieu vao trang index
+Xem chi tiet san pham
