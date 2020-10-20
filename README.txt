@@ -1,1 +1,1 @@
-Xem chi tiet san pham
+Xem danh sach san pham theo hang

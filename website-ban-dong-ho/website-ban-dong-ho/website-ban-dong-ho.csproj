@@ -513,6 +513,7 @@
     <Content Include="Views\HeadPartial.cshtml" />
     <Content Include="Views\HomeLayout.cshtml" />
     <Content Include="Views\Partial\MenuPartial.cshtml" />
+    <Content Include="Views\Partial\DanhSachSanPham.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

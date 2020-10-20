@@ -16,5 +16,13 @@ namespace website_ban_dong_ho.Controllers
 
             return PartialView(lstSP);
         }
+
+        public ActionResult DanhSachSanPham(int maNSX,int maLoaiSP)
+        {
+            var lstSP = db.SanPhams.Where(n => n.MaNSX == maNSX && n.MaLoaiSP == maLoaiSP && n.DaXoa == false).ToList();
+            ViewBag.lstSP = lstSP;
+
+            return View();
+        }
     }
 }

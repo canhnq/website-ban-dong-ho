@@ -105,7 +105,7 @@
                         <div class="col-sm-3">
                             <div class="card">
                                 <div class="card-block">
-                                    <a href="#"><img src="@Url.Content("~/Content/HinhAnhSP/"+item.HinhAnh)" style="width: 100%;height:216px" alt=""></a>
+                                    <a href="@Url.Action("XemChiTiet","SanPham",new { id = item.MaSP })"><img src="@Url.Content("~/Content/HinhAnhSP/"+item.HinhAnh)" style="width: 100%;height:216px" alt=""></a>
                                     <div class="card-title text-xs-center mt-1" style="height: 50px;">@item.TenSP</div>
                                     <div class="card-title text-xs-center">@item.DonGia.Value.ToString("#,##") VND</div>
                                     <div class="btn btn-primary themsp">Thêm vào giỏ</div>

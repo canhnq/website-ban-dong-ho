@@ -21,15 +21,23 @@
                         {
                             if (groupItem.Key != null)
                             {
+
+
                                 <div class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                                        aria-haspopup="true" aria-expanded="false">@groupItem.Key.TenLoai</a>
                                     <div class="dropdown-menu">
+
+                                        @{
+                                            var MaLoaiSP = groupItem.Key.MaLoaiSP;
+                                        }
+                                            
+
                                         @foreach (var item in groupItem.GroupBy(n => n.NhaSanXuat))
                                         {
                                             if (item.Key != null)
                                             {
-                                                <a class="dropdown-item" href="#">@item.Key.TenNSX</a>
+                                                <a class="dropdown-item" href="@Url.Action("DanhSachSanPham","Partial",new {maNSX =  item.Key.MaNSX,maLoaiSP = MaLoaiSP})">@item.Key.TenNSX</a>
                                             }
                                         }
                                     </div>
