@@ -1,0 +1,52 @@
+﻿@using website_ban_dong_ho.Models
+@model ThanhVien
+@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Views/HomeLayout.cshtml";
+}
+
+<div class="container mb-1">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-md-center font-weight-bold">Đăng nhập</h1>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row" style="text-align: center;justify-content: center;">
+        @using (Html.BeginForm())
+        {
+            <div class="col-md-12">
+                <span class="far fa-id-badge" style="font-size:40px;padding-top:16px"></span>
+                @Html.TextBox("txtTaiKhoan", "", new { @class = "taiKhoan TaiKhoan", style = "width:300px;", @placeholder = "Tên đăng nhập..." })
+            </div>
+            <div class="col-md-12">
+                <span class="fas fa-key" style="font-size:40px;padding-top:16px;padding-right:10px"></span>
+                @Html.TextBox("txtMatKhau", "", new { @class = "matKhau MatKhau", style = "width:300px;margin-left:-10px", @placeholder = "Mật khẩu...", @required = "", @type = "password" })
+            </div>
+            <div class="col-md-12 mt-1">
+                <p><a href="#">Quên mật khẩu?</a></p>
+            </div>
+       
+            <div class="col-md-12 mb-1">
+                <button type="submit" class="btn btn-primary" id="btnDangNhap">Đăng nhập</button>
+                <a class="btn btn-primary" href="@Url.Action("DangKy","Partial")" role="button" style="margin-left: 50px">Đăng ký</a>
+            </div>
+            <div class="col-md-12">
+                <h1 style="color:red;font-weight:bold">@ViewBag.ThongBao</h1>
+            </div>
+        }
+    </div>
+</div>
+<script type="text/javascript">
+    $("#btnDangNhap").click(function () {
+        var TaiKhoan = $(".TaiKhoan").val();
+        var MatKhau = $(".MatKhau").val();
+        //alert("Tài khoản:" + TaiKhoan + "\n Mật khẩu:" + MatKhau);
+        if (TaiKhoan == "") {
+            alert("Lỗi");
+            return;
+        }
+    });
+</script>
+

@@ -520,6 +520,7 @@
     <Content Include="Views\Partial\MenuPartial.cshtml" />
     <Content Include="Views\Partial\DanhSachSanPham.cshtml" />
     <Content Include="Views\Partial\DangKy.cshtml" />
+    <Content Include="Views\Partial\DangNhap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

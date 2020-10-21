@@ -19,7 +19,7 @@ namespace website_ban_dong_ho.Controllers
             return PartialView(lstSP);
         }
 
-        public ActionResult DanhSachSanPham(int maNSX,int maLoaiSP)
+        public ActionResult DanhSachSanPham(int maNSX, int maLoaiSP)
         {
             var lstSP = db.SanPhams.Where(n => n.MaNSX == maNSX && n.MaLoaiSP == maLoaiSP && n.DaXoa == false).ToList();
             ViewBag.lstSP = lstSP;
@@ -58,6 +58,35 @@ namespace website_ban_dong_ho.Controllers
             lstCauHoi.Add("Ca sĩ mà bạn yêu thích?");
             lstCauHoi.Add("Nghề nghiệp của bạn là gì?");
             return lstCauHoi;
+        }
+
+        [HttpGet]
+        public ActionResult DangNhap()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult DangNhap(FormCollection f)
+        {
+            string sTaiKhoan = f["txtTaiKhoan"].ToString();
+            string sMatKhau = f["txtMatKhau"].ToString();
+
+            ThanhVien tv = db.ThanhViens.SingleOrDefault(n => n.TaiKhoan == sTaiKhoan && n.MatKhau == sMatKhau);
+
+            if (tv != null)
+            {
+                Session["TaiKhoan"] = tv;
+                return RedirectToAction("Index","Home");
+            }
+            ViewBag.ThongBao = "Sai tên đăng nhập hoặc tài khoản!!!";
+            return View();
+        }
+
+        public ActionResult DangXuat()
+        {
+            Session["TaiKhoan"] = null;
+            return RedirectToAction("Index","Home");
         }
     }
 }
