@@ -47,6 +47,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CaptchaMvc, Version=2.5.0.0, Culture=neutral, PublicKeyToken=fe46ad421dd3b0e6, processorArchitecture=MSIL">
+      <HintPath>..\packages\CaptchaMvc.Mvc5.1.5.0\lib\net45-full\CaptchaMvc.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -192,6 +195,8 @@
     <Content Include="App_Data\QLCHDongHo_log.ldf">
       <DependentUpon>QLCHDongHo.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\all.css" />
+    <Content Include="Content\all.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -514,6 +519,7 @@
     <Content Include="Views\HomeLayout.cshtml" />
     <Content Include="Views\Partial\MenuPartial.cshtml" />
     <Content Include="Views\Partial\DanhSachSanPham.cshtml" />
+    <Content Include="Views\Partial\DangKy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

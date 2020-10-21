@@ -62,3 +62,6 @@ E:\Do-an\website-ban-dong-ho-mvc\website-ban-dong-ho\website-ban-dong-ho\bin\ros
 E:\Do-an\website-ban-dong-ho-mvc\website-ban-dong-ho\website-ban-dong-ho\bin\roslyn\System.Memory.dll
 E:\Do-an\website-ban-dong-ho-mvc\website-ban-dong-ho\website-ban-dong-ho\bin\roslyn\System.Numerics.Vectors.dll
 E:\Do-an\website-ban-dong-ho-mvc\website-ban-dong-ho\website-ban-dong-ho\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+E:\Do-an\website-ban-dong-ho-mvc\website-ban-dong-ho\website-ban-dong-ho\bin\CaptchaMvc.dll
+E:\Do-an\website-ban-dong-ho-mvc\website-ban-dong-ho\website-ban-dong-ho\bin\CaptchaMvc.pdb
+E:\Do-an\website-ban-dong-ho-mvc\website-ban-dong-ho\website-ban-dong-ho\bin\CaptchaMvc.xml

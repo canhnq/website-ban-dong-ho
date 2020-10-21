@@ -1,0 +1,61 @@
+﻿@using CaptchaMvc.HtmlHelpers;
+@using CaptchaMvc;
+@using website_ban_dong_ho.Models
+@model ThanhVien
+@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/HomeLayout.cshtml";
+}
+
+<div class="container mb-1">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-md-center font-weight-bold">Tạo tài khoản</h1>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row" style="text-align: center;justify-content: center;">
+        @using (Html.BeginForm())
+        {
+            <div class="col-md-12">
+                <span class="far fa-id-badge" style="font-size:40px;padding-top:16px"></span>
+                @Html.TextBox("TaiKhoan", "", new { style = "width:300px;", @placeholder = "Tên đăng nhập..." })
+            </div>
+            <div class="col-md-12">
+                <span class="far fa-id-badge" style="font-size:40px;padding-top:16px"></span>
+                @Html.TextBox("HoTen", "", new { style = "width:300px;", @placeholder = "Họ tên..." })
+            </div>
+            <div class="col-md-12">
+                <span class="fas fa-map-marker-alt" style="font-size:40px;padding-top:16px"></span>
+                @Html.TextBox("DiaChi", "", new { style = "width:300px;", @placeholder = "Địa chỉ..." })
+            </div>
+            <div class="col-md-12">
+                <span class="fas fa-envelope" style="font-size:40px;padding-top:16px;padding-right:10px"></span>
+                @Html.TextBox("Email", "", new { style = "width:300px;margin-left:-10px", @placeholder = "Email..." })
+            </div>
+            <div class="col-md-12">
+                <span class="fas fa-key" style="font-size:40px;padding-top:16px;padding-right:10px"></span>
+                @Html.TextBox("MatKhau", "", new { style = "width:300px;margin-left:-10px", @placeholder = "Mật khẩu..." })
+            </div>
+            <div class="col-md-12">
+                <span class="fas fa-question-circle" style="font-size:40px;padding-top:16px;padding-right:10px"></span>
+                @Html.DropDownList("CauHoi", null, new { style = "width:300px;margin-left:-10px" })
+            </div>
+            <div class="col-md-12">
+                <span class="fas fa-quote-right" style="font-size:40px;padding-top:16px;padding-right:10px"></span>
+                @Html.TextBox("CauTraLoi", "", new { style = "width:300px;margin-left:-10px", @placeholder = "Câu trả lời..." })
+            </div>
+            <div class="col-md-12 mb-1">
+                @Html.MathCaptcha()
+            </div>
+            <div class="col-md-12 mb-1">
+                <button type="submit" class="btn btn-primary">Xác nhận</button>
+                <a class="btn btn-primary" href="@Url.Action("Index","Home")" role="button" style="margin-left: 50px">Quay về</a>
+            </div>
+            <div class="col-md-12">
+                <h1 style="color:red;font-weight:bold">@ViewBag.ThongBao</h1>
+            </div>
+        }
+    </div>
+</div>
