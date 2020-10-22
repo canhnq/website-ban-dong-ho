@@ -131,6 +131,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PartialController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
@@ -149,6 +150,7 @@
     <Compile Include="Models\DonDatHang.cs">
       <DependentUpon>QLCHDongHoModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ItemGioHang.cs" />
     <Compile Include="Models\KhachHang.cs">
       <DependentUpon>QLCHDongHoModel.tt</DependentUpon>
     </Compile>
@@ -521,6 +523,8 @@
     <Content Include="Views\Partial\DanhSachSanPham.cshtml" />
     <Content Include="Views\Partial\DangKy.cshtml" />
     <Content Include="Views\Partial\DangNhap.cshtml" />
+    <Content Include="Views\GioHang\GioHang.cshtml" />
+    <Content Include="Views\GioHang\SuaGioHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

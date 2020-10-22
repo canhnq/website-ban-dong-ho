@@ -61,7 +61,7 @@
 
                 <br/>
   
-                <button type="button" class="btn btn-primary">Giỏ hàng</button>
+                <a class="btn btn-primary themsp" href="@Url.Action("ThemGioHang","GioHang",new { @MaSP = @Model.MaSP, @strURL = Request.Url.ToString() })" role="button">Thêm vào giỏ</a>
 
             </div>
         </div>

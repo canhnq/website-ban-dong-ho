@@ -1,0 +1,122 @@
+﻿@using website_ban_dong_ho.Models;
+@model List<ItemGioHang>
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/HomeLayout.cshtml";
+}
+
+@if (Model.Count == 0)
+{
+    <h1 class="text-md-center font-weight-bold">Giỏ hàng rỗng!!!</h1>
+}
+else
+{
+    <h1 class="text-md-center font-weight-bold mb-1">Giỏ hàng</h1>
+    <div class="container" style="text-align: center;">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <tr>
+                        <td>Tên sản phẩm</td>
+                        <td>Hình ảnh</td>
+                        <td>Số lượng</td>
+                        <td>Đơn giá</td>
+                        <td>Thành tiền</td>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td style="vertical-align: middle;">@item.TenSP</td>
+                            <td style="vertical-align: middle;"><img src="@Url.Content("~/Content/HinhAnhSP/"+item.HinhAnh)" width="150" height="150" /></td>
+                            <td style="vertical-align: middle;">@item.SoLuong</td>
+                            <td style="vertical-align: middle;">@item.DonGia.ToString("#,##")</td>
+                            <td style="vertical-align: middle;">@item.ThanhTien.ToString("#,##")</td>
+                            <td style="vertical-align: middle;">@Html.ActionLink("Sửa", "SuaGioHang", new { @MaSP = item.MaSP })</td>
+                            <td style="vertical-align: middle;">@Html.ActionLink("Xóa", "XoaGioHang", new { @MaSP = item.MaSP })</td>
+
+                        </tr>
+                    }
+                </table>
+                <br />
+                @using (Html.BeginForm("DatHang", "GioHang"))
+                {
+                    if (Session["TaiKhoan"] == null)
+                    {
+                        <div class="ThongTinMuaHang">
+                            <div align="center" class="table">
+                                <div>
+                                    <h2 align="center">Thông tin khách hàng</h2>
+                                </div>
+                                <div>
+                                    <span class="far fa-id-badge" style="font-size:40px;padding-top:16px"></span>
+                                    @Html.TextBox("TenKH", "", new { style = "width:300px;", @placeholder = "Họ tên..." })
+                                    <p style="color:red" id="TB_TenKH"></p>
+                                </div>
+                                <div>
+                                    <span class="fas fa-map-marker-alt" style="font-size:40px;padding-top:16px"></span>
+                                    @Html.TextBox("DiaChi", "", new { style = "width:300px;", @placeholder = "Địa chỉ..." })
+                                    <p style="color:red" id="TB_DiaChi"></p>
+                                </div>
+                                <div>
+                                    <span class="fas fa-envelope" style="font-size:40px;padding-top:16px;padding-right:10px"></span>
+                                    @Html.TextBox("Email", "", new { style = "width:300px;margin-left:-10px", @placeholder = "Email..." })
+                                    <p style="color:red" id="ktEmail"></p>
+                                </div>
+                                <div style="margin-left: 5px">
+                                    <span class="fa fa-mobile" style="font-size:40px;padding-top:16px;"></span>
+                                    @Html.TextBox("SoDienThoai", "", new { style = "width:300px;", @placeholder = "Số điện thoại..." })
+                                    <p style="color:red" id="TB_SoDienThoai"></p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div class="divDatHang mt-2" style="text-align:center;">
+                        <input id="btnDatHang" type="submit" class="btn btn-primary" value="Đặt hàng" style="margin-left:10px" />
+                        <a href="@Url.Action("Index", "Home")" class="btn btn-primary" style="margin-left:100px">Mua tiếp</a>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    $("#btnDatHang").click(function () {
+        var loi = 0;
+        if ($("#TenKH").val() == "") {
+            $("#TB_TenKH").text("Tên khách hàng không được bỏ trống!!!");
+            loi++;
+
+        }
+        else {
+            $("#TB_TenKH").text("");
+        }
+        if ($("#DiaChi").val() == "") {
+            $("#TB_DiaChi").text("Địa chỉ không được bỏ trống!!!");
+            loi++;
+
+        }
+        else {
+            $("#TB_DiaChi").text("");
+        }
+        var dinhDang = /^[0-9A-Za-z]+[0-9A-Za-z_]*@@[\w\d.]+\.\w{2,4}$/;
+        var KTemail = dinhDang.test($('#Email').val());
+        if (!KTemail) {
+            $('#ktEmail').text("Email không hợp lệ!!!");
+            loi++;
+
+        }
+        if ($("#SoDienThoai").val() == "") {
+            $("#TB_SoDienThoai").text("Số điện thoại không được bỏ trống!!!");
+            loi++;
+
+        }
+        else {
+            $("#TB_SoDienThoai").text("");
+        }
+        if (loi != 0) {
+            return false;
+        }
+    });
+</script>
