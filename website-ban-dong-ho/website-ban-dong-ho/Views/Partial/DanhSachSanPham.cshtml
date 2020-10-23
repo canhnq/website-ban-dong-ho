@@ -1,5 +1,6 @@
 ﻿@using website_ban_dong_ho.Models
-@model IEnumerable<SanPham>
+@using PagedList.Mvc
+@model PagedList.IPagedList<SanPham>
 @{
     ViewBag.Title = "DanhSachSanPham";
     Layout = "~/Views/HomeLayout.cshtml";
@@ -12,16 +13,16 @@
     <div class="row">
         <div class="col-md-12">
             <h3>
-                @lstSP.GroupBy(n => n.LoaiSanPham).ElementAt(0).Key.TenLoai hãng @lstSP.GroupBy(n => n.NhaSanXuat).ElementAt(0).Key.TenNSX
+                @Model.GroupBy(n => n.LoaiSanPham).ElementAt(0).Key.TenLoai hãng @Model.GroupBy(n => n.NhaSanXuat).ElementAt(0).Key.TenNSX
             </h3>
         </div>
-        
+
     </div>
 </div>
-<br/>
+<br />
 <div class="container">
     <div class="row">
-        @foreach (var item in lstSP)
+        @foreach (var item in Model.OrderBy(n => n.DonGia))
         {
             <div class="col-sm-3">
                 <div class="card">
@@ -36,3 +37,19 @@
         }
     </div>
 </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="dlink">
+                Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
+                @Html.PagedListPager(Model, page => Url.Action("DanhSachSanPham", new { page = page, @MaLoaiSP = ViewBag.MaLoaiSP, @MaNSX = ViewBag.MaNSX }), new PagedListRenderOptions() { ClassToApplyToFirstListItemInPager = null, LiElementClasses = new string[] { "page-item" }, })
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .page-item {
+        margin-right: 5px;
+    }
+</style>
+

@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using website_ban_dong_ho.Models;
 using CaptchaMvc;
 using CaptchaMvc.HtmlHelpers;
+using PagedList;
+using System.Net;
 
 namespace website_ban_dong_ho.Controllers
 {
@@ -19,12 +21,24 @@ namespace website_ban_dong_ho.Controllers
             return PartialView(lstSP);
         }
 
-        public ActionResult DanhSachSanPham(int maNSX, int maLoaiSP)
+        public ActionResult DanhSachSanPham(int? MaLoaiSP, int? MaNSX, int? page)
         {
-            var lstSP = db.SanPhams.Where(n => n.MaNSX == maNSX && n.MaLoaiSP == maLoaiSP && n.DaXoa == false).ToList();
-            ViewBag.lstSP = lstSP;
+            if (MaLoaiSP == null || MaNSX == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var lstSP = db.SanPhams.Where(n => n.MaLoaiSP == MaLoaiSP && n.MaNSX == MaNSX && n.DaXoa == false);
+            if (lstSP.Count() == 0)
+            {
+                return HttpNotFound();
+            }
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
 
-            return View();
+            ViewBag.MaLoaiSP = MaLoaiSP;
+            ViewBag.MaNSX = MaNSX;
+
+            return View(lstSP.OrderBy(n => n.MaSP).ToPagedList(pageNumber, pageSize));
         }
 
         [HttpGet]

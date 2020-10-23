@@ -37,7 +37,7 @@
                                         {
                                             if (item.Key != null)
                                             {
-                                                <a class="dropdown-item" href="@Url.Action("DanhSachSanPham","Partial",new {maNSX =  item.Key.MaNSX,maLoaiSP = MaLoaiSP})">@item.Key.TenNSX</a>
+                                                <a class="dropdown-item" href="@Url.Action("DanhSachSanPham","Partial",new {@MaLoaiSP = groupItem.Key.MaLoaiSP, @MaNSX = item.Key.MaNSX})">@item.Key.TenNSX</a>
                                             }
                                         }
                                     </div>
