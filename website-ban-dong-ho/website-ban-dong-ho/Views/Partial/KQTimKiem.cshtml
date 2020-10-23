@@ -1,0 +1,43 @@
+﻿@using website_ban_dong_ho.Models
+@using PagedList.Mvc
+@model PagedList.IPagedList<SanPham>
+@{
+    ViewBag.Title = "KQTimKiem";
+    Layout = "~/Views/HomeLayout.cshtml";
+}
+@{
+    IEnumerable<SanPham> lstSP = ViewBag.lstSP as IEnumerable<SanPham>;
+}
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model.OrderBy(n => n.DonGia))
+        {
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-block">
+                        <a href="@Url.Action("XemChiTiet","SanPham",new { id = item.MaSP })"><img src="@Url.Content("~/Content/HinhAnhSP/"+item.HinhAnh)" style="width: 100%;height:216px" alt=""></a>
+                        <div class="card-title text-xs-center mt-1" style="height: 50px;">@item.TenSP</div>
+                        <div class="card-title text-xs-center">@item.DonGia.Value.ToString("#,##") VND</div>
+                        <a class="btn btn-primary themsp" href="@Url.Action("ThemGioHang","GioHang",new { @MaSP = item.MaSP, @strURL = Request.Url.ToString() })" role="button">Thêm vào giỏ</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="dlink">
+                Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
+                @Html.PagedListPager(Model, page => Url.Action("KQTimKiem", new {@sTuKhoa = ViewBag.TuKhoa, page = page}), new PagedListRenderOptions() { ClassToApplyToFirstListItemInPager = null, LiElementClasses = new string[] { "page-item" }, })
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .page-item {
+        margin-right: 5px;
+    }
+</style>
+

@@ -7,10 +7,16 @@
             <div class="col-sm-12">
 
                 <nav class="navbar navbar-expand navbar-light bg-light">
-                    <form class="navbar-form pull-right">
-                        <input type="text" style="width: 300px;">
-                        <button type="submit" class="btn btn-success">Tìm kiếm</button>
-                    </form>
+                    @using (Html.BeginForm("LayTuKhoaTimKiem", "Partial"))
+                    {
+                        <input type="text" name="sTuKhoa" placeholder="Nhập tên sản phẩm cần tìm..." style="width:300px">
+
+
+                        <button type="submit" value="" class="btn btn-success">
+                            <i class="fa fa-search"></i>
+                        </button>
+
+                    }
 
                     <div class="nav navbar-nav">
                         <a class="nav-item nav-link active" href="@Url.Action("Index","Home")">
@@ -31,7 +37,7 @@
                                         @{
                                             var MaLoaiSP = groupItem.Key.MaLoaiSP;
                                         }
-                                            
+
 
                                         @foreach (var item in groupItem.GroupBy(n => n.NhaSanXuat))
                                         {

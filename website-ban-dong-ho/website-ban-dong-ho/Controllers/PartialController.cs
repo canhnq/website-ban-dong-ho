@@ -102,5 +102,26 @@ namespace website_ban_dong_ho.Controllers
             Session["TaiKhoan"] = null;
             return RedirectToAction("Index","Home");
         }
+
+        [HttpGet]
+        public ActionResult KQTimKiem(string sTuKhoa, int? page)
+        {
+            if (Request.HttpMethod != "GET")
+            {
+                page = 1;
+            }
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+
+            var lstSP = db.SanPhams.Where(n => n.TenSP.Contains(sTuKhoa));
+            ViewBag.TuKhoa = sTuKhoa;
+            return View(lstSP.OrderBy(n => n.TenSP).ToPagedList(pageNumber, pageSize));
+        }
+
+        [HttpPost]
+        public ActionResult LayTuKhoaTimKiem(string sTuKhoa)
+        {
+            return RedirectToAction("KQTimKiem", new { @sTuKhoa = sTuKhoa });
+        }
     }
 }
